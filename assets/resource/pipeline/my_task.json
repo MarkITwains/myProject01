@@ -1,11 +1,111 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "MyTask4": {
-        "recognition": "Custom",
-        "custom_recognition": "my_reco_222",
-        "action": "Custom",
-        "custom_action": "my_action_111"
+    "openSoftware": {
+        "recognition": "OCR",
+        "expected": "慈善联盟",
+        "action": "Click",
+        "next": ["acceptNotice"]
+    },
+    "acceptNotice": {
+        "recognition": "OCR",
+        "expected": "知道了",
+        "index": [-5, 4],
+        "action": "Click",
+        "next": ["goLoginBoard"]
+    },
+    "goLoginBoard": {
+        "recognition": "TemplateMatch",
+        "template": "User.png",
+        "action": "Click",
+        "next": ["loginRegion"]
+    },
+    "loginRegion": {
+        "recognition": "OCR",
+        "expected": "立即登录",
+        "action": "Click",
+        "next": ["clickAccount"]
+    },
+    "clickAccount": {
+        "recognition": "OCR",
+        "expected": "请输入账号",
+        "action": "Click",
+        "next": ["enterAccount"]
+    },
+    "enterAccount": {
+        "recognition": "DirectHit",
+        "action": "InputText",
+        "input_text": "18287734507",
+        "next": ["clickPassword"]
+    },
+    "clickPassword": {
+        "recognition": "OCR",
+        "expected": "输入密码",
+        "action": "Click",
+        "next": ["enterPassword"]
+    },
+    "enterPassword": {
+        "recognition": "DirectHit",
+        "action": "InputText",
+        "input_text": "123456",
+        "next": ["acceptDeals"]
+    },
+    "acceptDeals": {
+        "recognition": "OCR",
+        "expected": "立即阅读并同意",
+        "action": "Click",
+        "next": ["clickLogin"]
+    },
+    "clickLogin": {
+        "recognition": "TemplateMatch",
+        "template": "LoginButton.png",
+        "action": "Click",
+        "next": ["backMenu"]
+    },
+    "backMenu": {
+        "recognition": "TemplateMatch",
+        "template": "Menu.png",
+        "action": "Click",
+        "next": ["todayReward"]
+    },
+    "todayReward": {
+        "recognition": "TemplateMatch",
+        "template": "TodayReward.png",
+        "action": "Click",
+        "next": ["clickReward"]
+    },
+    "clickReward": {
+        "recognition": "TemplateMatch",
+        "template": "ClickReward.png",
+        "action": "Click",
+        "next": ["backMenuAgain"]
+    },
+    "backMenuAgain": {
+        "recognition": "TemplateMatch",
+        "template": "BackMenuAgain.png",
+        "action": "Click",
+        "next": ["goLoginBoardAgain"]
+    },
+    "goLoginBoardAgain": {
+        "recognition": "TemplateMatch",
+        "template": "User.png",
+        "action": "Click",
+        "next": ["openUserRegion"]
+    },
+    "openUserRegion": {
+        "recognition": "OCR",
+        "expected": "手机号",
+        "action": "Click",
+        "next": ["goSwipe"]
+    },
+    "goSwipe": {
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [330, 950, 10, 10],
+        "end": [330, 630, 10, 10],
+        "next": ["quitLogin"]
+    },
+    "quitLogin": {
+        "recognition": "OCR",
+        "expected": "退出登录",
+        "action": "Click"
     }
 }
